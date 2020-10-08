@@ -36,6 +36,9 @@ defmodule Imap.Socket do
   def recv(socket, len \\ 0) when is_tuple(socket) and is_integer(len),
     do: :ssl.recv(socket, len)
 
+  def recv_t(socket, len \\ 0, timeout \\ 15_000) when is_tuple(socket) and is_integer(len),
+    do: :ssl.recv(socket, len, timeout)
+
   @doc """
   Closes CONNECTION of socket but SSL is still alive.
   To stop SSL app and close ports openned by it use stop.

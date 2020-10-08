@@ -26,13 +26,13 @@ defmodule Imap.Conn do
   def handle_send(any), do: {:error, any}
 
   def init_recv(socket) when is_tuple(socket),
-    do: Socket.recv(socket, 0)
+    do: Socket.recv_t(socket, 0)
 
   # Recieve data from socket
   def recv(socket, tag) when is_tuple(socket), do: recv(socket, "", tag)
 
   defp recv(socket, data, tag) do
-    {:ok, new} = Socket.recv(socket)
+    {:ok, new} = Socket.recv_t(socket)
 
     if Regex.match?(~r/^.*#{tag}\s.*\r\n$/s, new),
       do: data <> new,
