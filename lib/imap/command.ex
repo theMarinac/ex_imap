@@ -2,7 +2,8 @@ defmodule Imap.Command do
   @moduledoc """
   IMAP commands in form of an struct.\n
   I strongly suggest that user of this lib reads [RFC3501 Client Commands, Section 6](https://tools.ietf.org/html/rfc3501#section-6)\n
-  [Formal syntax](https://tools.ietf.org/html/rfc3501#section-9) for better understanding.
+  [Formal syntax](https://tools.ietf.org/html/rfc3501#section-9) for better understanding.\n
+  Commands are organized by the state in which the command is permitted.
   """
   defstruct tag: "I_TAG", instruction: nil
 
